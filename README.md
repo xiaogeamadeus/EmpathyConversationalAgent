@@ -7,18 +7,63 @@ From the 2008, 87.2% women in Afghanistan have reported at least one form of DV,
 
 1. Install the dependency
 ```shell
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 2. Import the environment parameters 
     please copy the `envsample` file in your local, change the name to `.env` and add your own api-key into .env file.
 
-3. Contact with fully conversational agent
+### Test in local
+
+Contact with fully conversational agent
 ```shell
 python3 main.py
 ```
 
-(Option: only talk with listener agent)
+Only talk with listener agent
 ```shell
 python3 onlyListener.py
+```
+
+Only talk with chatGPT4.0
+```shell
+python3 onlyGPT.py
+```
+
+### Test in flask
+Start server in local
+```shell
+python3 app.py
+```
+
+Send request to local server
+
+1. Talk with empathy agent
+URL: http://{localhost}/empathyConverse
+body
+```json
+{
+  "id": "{user id}",
+  "message": "{user input}"
+}
+```
+
+2. Talk with listener agent
+   URL: http://{localhost}/listenerConverse
+   body
+```json
+{
+  "id": "{user id}",
+  "message": "{user input}"
+}
+```
+
+3. Talk with chatGPT4.0 agent
+   URL: http://{localhost}/gptConverse
+   body
+```json
+{
+  "id": "{user id}",
+  "message": "{user input}"
+}
 ```
