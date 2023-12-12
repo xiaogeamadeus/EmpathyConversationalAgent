@@ -5,15 +5,20 @@ From the 2008, 87.2% women in Afghanistan have reported at least one form of DV,
 
 ## Get start
 
-1. Install the dependency
+1. Clone the repo in your local
+```shell
+git clone https://github.com/xiaogeamadeus/EmpathyConversationalAgent.git
+```
+
+2. Install the dependency
 ```shell
 pip3 install -r requirements.txt
 ```
 
-2. Import the environment parameters 
+3. Import the environment parameters 
     please copy the `envsample` file in your local, change the name to `.env` and add your own api-key into .env file.
 
-### Test in local
+#### Test in local
 
 Contact with fully conversational agent
 ```shell
@@ -30,7 +35,7 @@ Only talk with chatGPT4.0
 python3 onlyGPT.py
 ```
 
-### Test in flask
+#### Test in flask
 Start server in local
 ```shell
 python3 app.py
