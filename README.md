@@ -21,7 +21,10 @@ pip3 install -r requirements.txt
 #### Start frontend
 
 ```shell
-python3 -m http.serverç
+# Go to frontend folder
+cd frontend
+
+python3 -m http.server
 ```
 
 Go to the [website](http://localhost:8000/)
