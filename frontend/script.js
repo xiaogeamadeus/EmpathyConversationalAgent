@@ -3,6 +3,11 @@ const originBotName = 'ChatBot';
 let curBot = 0;
 let curStatus = 0;
 
+const bots = [
+    {1:"gptConverse"},
+    {2:"listenerConverse"},
+    {3:"empathyConverse"}];
+
 
 document.addEventListener('DOMContentLoaded', function() {
     displayInitialMessages();
@@ -28,17 +33,20 @@ document.getElementById('send-button').addEventListener('click', function() {
         displayMessage(userInput, 'user-message');
         document.getElementById('user-input').value = ''; // clear input
         if (curStatus === 3) {
+            const botObj = bots.find(obj => obj.hasOwnProperty(curBot));
+            const address = botObj[curBot];
             // Backend
-            fetch('/your-backend-endpoint', {
+            fetch(`http://127.0.0.1:5000/${address}`, {
                 method: 'POST',
+                mode: "cors",
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: userInput })
+                body: JSON.stringify({ "message": userInput })
             })
             .then(response => response.json())
             .then(data => {
-                displayMessage(data.reply, 'server-message');
+                displayMessage(data.agentName + ": " + data.message, 'server-message');
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -53,8 +61,6 @@ document.getElementById('send-button').addEventListener('click', function() {
                 const messages = [
                     { text: originBotName + ": Thank you so much! It seems like you have chose bot " + userInput + ".", delay: 3000 },
                     { text: originBotName + ": Please enjoy the conversation with your bot!", delay: 6000 },
-                    // { text: originBotName + ": By the way, please confirm that would you mind letting researchers from Kyoto University use our conversation data to make me more smart and can talk more things to you. Feel free to do the decision cause if you say 'No', you can also talk with me as well. We respect your choices.", delay: 9000 },
-                    // { text: originBotName + ": Would you mind if the researchers use this conversation data? (This conversation only) Please type 'yes' or 'no'", delay: 12000}
                 ];
             
                 messages.forEach((message, index) => {
@@ -89,7 +95,7 @@ document.getElementById('send-button').addEventListener('click', function() {
                 const messages = [
                     { text: originBotName + ": Thank you so much for sharing data to us! Researchers will try them best to make me more smart and easy to talk with!", delay: 5000 },
                     { text: originBotName + ": The next step is choosing bot type you want to talk with today.", delay: 5000 },
-                    { text: originBotName + ": Bot 1: a nomal robot; Bot 2: a listener robot; Bot 3: a friendly robot.", delay: 5000 },
+                    { text: originBotName + ": Bot 1: a Nomal Bot; Bot 2: a Listener Bot; Bot 3: a Friendly Bot.", delay: 5000 },
                     { text: originBotName + ": Please type '1', '2' or '3' to pick one of them and open conversation! P.S. you cannot change bot in once conversation.", delay: 5000}
                 ];
             

@@ -1,12 +1,14 @@
 import json
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
-import controller
+from controller import Controller
 from agents.compassionateListener import CompassionateListener
 from agents.normalGPT import NormalGPT
 
 app = Flask(__name__)
+CORS(app, resources=r'/*')
 
 
 # body: {id:"", message:""}
@@ -18,8 +20,9 @@ def empathy_converse():
     raw_data = request.data.decode('utf-8')
     data = json.loads(raw_data)
     user_input = data["message"]
+    controller = Controller()
     agent_response = controller.converse(user_input)
-    return jsonify({"agentName": "empathy", "message": agent_response})
+    return jsonify({"agentName": "Friendly Bot", "message": agent_response})
 
 
 @app.route('/listenerConverse', methods=['post'])
@@ -31,7 +34,7 @@ def listener_converse():
     user_input = data["message"]
     listener = CompassionateListener()
     agent_response = listener.run_agent(user_input)
-    return jsonify({"agentName": "listener", "message": agent_response})
+    return jsonify({"agentName": "Listener Bot", "message": agent_response})
 
 
 @app.route('/gptConverse', methods=['post'])
@@ -43,7 +46,7 @@ def gpt_converse():
     user_input = data["message"]
     gpt = NormalGPT()
     agent_response = gpt.run_agent(user_input)
-    return jsonify({"agentName": "gpt", "message": agent_response})
+    return jsonify({"agentName": "Nomal Bot", "message": agent_response})
 
 
 if __name__ == '__main__':
