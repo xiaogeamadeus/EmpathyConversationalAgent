@@ -3,7 +3,7 @@
 ## Background
 From the 2008, 87.2% women in Afghanistan have reported at least one form of DV, which might have increased with the government takeover in 2021 by Taliban.
 
-## Get start
+## Get start in local
 
 1. Clone the repo in your local
 ```shell
@@ -18,7 +18,16 @@ pip3 install -r requirements.txt
 3. Import the environment parameters 
     please copy the `envsample` file in your local, change the name to `.env` and add your own api-key into .env file.
 
-#### Test in local
+#### Start frontend
+
+```shell
+python3 -m http.serverç
+```
+
+Go to the [website](http://localhost:8000/)
+
+
+#### Test agent in local
 
 Contact with fully conversational agent
 ```shell
