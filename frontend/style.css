@@ -5,9 +5,10 @@ body {
 }
 
 #chat-container {
-    width: 90%; /* 对话框宽度调整为屏幕宽度的90% */
-    height: 90vh; /* 对话框高度调整为视口高度的90% */
-    margin: 5vh auto; /* 垂直居中 */
+    position: relative;
+    width: 90%; 
+    height: 90vh;
+    margin: 5vh auto;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,14 +18,14 @@ body {
 }
 
 #message-area {
-    flex-grow: 1; /* 让消息区域占据剩余的空间 */
+    flex-grow: 1; 
     overflow-y: auto;
     padding: 20px;
     background-color: #e5e5e5;
 }
 
 .message {
-    font-size: 1.1rem; /* 调整字体大小 */
+    font-size: 1.1rem;
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 20px;
@@ -51,7 +52,7 @@ body {
     border: none;
     border-top: 1px solid #ddd;
     box-sizing: border-box;
-    font-size: 1.1rem; /* 调整字体大小 */
+    font-size: 1.1rem;
 }
 
 #send-button {
@@ -65,4 +66,25 @@ body {
 
 #send-button:hover {
     background-color: #0056b3;
+}
+
+#loading-indicator {
+    position: absolute;
+    top: 600px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+    height: 50px;
+}
+
+#loading-indicator img {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+#loading-indicator span {
+    font-size: 12px;
+    line-height: 20px;
 }
