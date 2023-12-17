@@ -26,6 +26,30 @@ bot_name = "ListenerBot"
 
 # args = parse_args()
 
+class EmpathyConversationalAgent:
+    def __init__(self):
+        compassionate_listener = CompassionateListener()
+        empathy_manager = Empathy()
+        avoiding_manager = AvoidingManager()
+        simple_english_editor = SimpleEnglishEditor()
+        emotion_recognizer = EmotionRecognizer()
+        culturally_reviewer = CulturallyReviewer()
+        kaomoji_manager = KaomojiManager()
+        self.controller = Controller(
+            compassionate_listener=compassionate_listener,
+            empathy_manager=empathy_manager,
+            avoiding_manager=avoiding_manager,
+            simple_english_editor=simple_english_editor,
+            culturally_reviewer=culturally_reviewer,
+            emotion_recognizer=emotion_recognizer,
+            kaomoji_manager=kaomoji_manager
+        )
+
+    def converse(self, user_input):
+        return self.controller.converse(user_input)
+
+
+
 if __name__ == "__main__":
     conversation_active = False
     compassionate_listener = CompassionateListener()

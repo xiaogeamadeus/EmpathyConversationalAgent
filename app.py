@@ -3,12 +3,14 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from controller import Controller
+from main import EmpathyConversationalAgent
 from agents.compassionateListener import CompassionateListener
 from agents.normalGPT import NormalGPT
 
 app = Flask(__name__)
 CORS(app, resources=r'/*')
+
+empathy = EmpathyConversationalAgent()
 
 
 # body: {id:"", message:""}
@@ -20,8 +22,7 @@ def empathy_converse():
     raw_data = request.data.decode('utf-8')
     data = json.loads(raw_data)
     user_input = data["message"]
-    controller = Controller()
-    agent_response = controller.converse(user_input)
+    agent_response = empathy.converse(user_input)
     return jsonify({"agentName": "Friendly Bot", "message": agent_response})
 
 
