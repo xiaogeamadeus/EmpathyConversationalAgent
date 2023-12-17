@@ -60,7 +60,7 @@ document.getElementById('send-button').addEventListener('click', function() {
                 curBot = userInput;
                 const messages = [
                     { text: originBotName + ": Thank you so much! It seems like you have chose group " + userInput + ".", delay: 5000 },
-                    { text: originBotName + ": Please enjoy the conversation with your bot!", delay: 5000 },
+                    { text: originBotName + ": Please enjoy the conversation with AI!", delay: 5000 },
                 ];
             
                 messages.forEach((message, index) => {

@@ -24,7 +24,7 @@ pip3 install -r requirements.txt
 # Go to frontend folder
 cd frontend
 
-python3 -m http.server
+python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
 Go to the [website](http://localhost:8000/)
