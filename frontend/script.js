@@ -36,7 +36,7 @@ document.getElementById('send-button').addEventListener('click', function() {
             const botObj = bots.find(obj => obj.hasOwnProperty(curBot));
             const address = botObj[curBot];
             // Backend
-            fetch(`http://127.0.0.1:5000/${address}`, {
+            fetch(`http://52.193.135.127:5000/${address}`, {
                 method: 'POST',
                 mode: "cors",
                 headers: {
