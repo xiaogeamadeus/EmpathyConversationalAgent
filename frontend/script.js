@@ -1,12 +1,12 @@
 const originBotName = 'ChatBot';
 
-let curBot = 0;
+let curBot = "";
 let curStatus = 0;
 
 const bots = [
-    {1:"gptConverse"},
-    {2:"listenerConverse"},
-    {3:"empathyConverse"}];
+    {"A":"gptConverse"},
+    {"B":"listenerConverse"},
+    {"C":"empathyConverse"}];
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,21 +46,21 @@ document.getElementById('send-button').addEventListener('click', function() {
             })
             .then(response => response.json())
             .then(data => {
-                displayMessage(data.agentName + ": " + data.message, 'server-message');
+                displayMessage(originBotName + ": " + data.message, 'server-message');
             })
             .catch(error => {
                 console.error('Error:', error);
                 displayMessage('Error: Having some connection error, please refresh the page.', 'server-message');
             });
         } else if (curStatus === 2) {
-            if (userInput !== "1" && userInput !== "2" && userInput !== "3") {
-                displayMessage('Error: Please input 1, 2 or 3.', 'server-message');
+            if (userInput !== "A" && userInput !== "B" && userInput !== "C") {
+                displayMessage('Error: Please input A, B or C.', 'server-message');
             } else {
                 curStatus = 3
-                curBot = parseInt(userInput, 10);
+                curBot = userInput;
                 const messages = [
-                    { text: originBotName + ": Thank you so much! It seems like you have chose bot " + userInput + ".", delay: 3000 },
-                    { text: originBotName + ": Please enjoy the conversation with your bot!", delay: 6000 },
+                    { text: originBotName + ": Thank you so much! It seems like you have chose group " + userInput + ".", delay: 5000 },
+                    { text: originBotName + ": Please enjoy the conversation with your bot!", delay: 5000 },
                 ];
             
                 messages.forEach((message, index) => {
@@ -94,9 +94,8 @@ document.getElementById('send-button').addEventListener('click', function() {
                 curStatus = 2
                 const messages = [
                     { text: originBotName + ": Thank you so much for sharing data to us! Researchers will try them best to make me more smart and easy to talk with!", delay: 5000 },
-                    { text: originBotName + ": The next step is choosing bot type you want to talk with today.", delay: 5000 },
-                    { text: originBotName + ": Bot 1: a Nomal Bot; Bot 2: a Listener Bot; Bot 3: a Friendly Bot.", delay: 5000 },
-                    { text: originBotName + ": Please type '1', '2' or '3' to pick one of them and open conversation! P.S. you cannot change bot in once conversation.", delay: 5000}
+                    { text: originBotName + ": The next step is choosing your group.", delay: 5000 },
+                    { text: originBotName + ": Please type 'A', 'B' or 'C' to pick one of them and open conversation! P.S. you cannot change group in once conversation.", delay: 5000}
                 ];
             
                 messages.forEach((message, index) => {
