@@ -26,7 +26,7 @@ def write_json_log(user_id, cur_agent, user_input, user_output):
         "userInput": user_input,
         "userOutput": user_output
     }
-    with open(f"/home/ec2-user/log_{current_date}.json", "a") as log_file:
+    with open(f"/home/ec2-user/logs/log_{current_date}.json", "a") as log_file:
         json.dump(log_entry, log_file)
         log_file.write('\n')  # Add a newline for readability
 

@@ -29,6 +29,29 @@ python3 -m http.server 8000 --bind 0.0.0.0
 
 Go to the [website](http://localhost:8000/)
 
+#### Make backend and frontend still work
+
+Start Frontend
+```shell
+nohup python3 -m http.server 8000 --bind 0.0.0.0 > /home/ec2-user/output_front.log 2>&1 &
+```
+
+Start Backend
+```shell
+nohup python3 app.py > /home/ec2-user/output_backend.log 2>&1 &
+```
+
+Check current process
+```shell
+ps -ef
+```
+
+Kill process
+```shell
+kill [processId]
+```
+
+
 
 #### Test agent in local
 
