@@ -3,6 +3,9 @@
 ## Background
 From the 2008, 87.2% women in Afghanistan have reported at least one form of DV, which might have increased with the government takeover in 2021 by Taliban.
 
+## Access Services
+By [link](http://52.193.135.127:8000/)
+
 ## Get start in local
 
 1. Clone the repo in your local
@@ -33,6 +36,7 @@ Go to the [website](http://localhost:8000/)
 
 Start Frontend
 ```shell
+cd frontend/
 nohup python3 -m http.server 8000 --bind 0.0.0.0 > /home/ec2-user/output_front.log 2>&1 &
 ```
 
