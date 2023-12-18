@@ -2,6 +2,7 @@ const originBotName = 'ChatBot';
 
 let curBot = "";
 let curStatus = 0;
+let userId = "";
 
 const bots = [
     {"A":"gptConverse"},
@@ -37,7 +38,7 @@ document.getElementById('send-button').addEventListener('click', function() {
         displayMessage(userInput, 'user-message');
         document.getElementById('user-input').value = ''; // clear input
         setLoadingIndicator(true);
-        if (curStatus === 3) {
+        if (curStatus === 4) {
             const botObj = bots.find(obj => obj.hasOwnProperty(curBot));
             const address = botObj[curBot];
             // Backend
@@ -47,7 +48,10 @@ document.getElementById('send-button').addEventListener('click', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "message": userInput })
+                body: JSON.stringify({
+                    "id": userId, 
+                    "message": userInput 
+                })
             })
             .then(response => response.json())
             .then(data => {
@@ -59,12 +63,12 @@ document.getElementById('send-button').addEventListener('click', function() {
                 setLoadingIndicator(false);
                 displayMessage('Error: Having some connection error, please refresh the page.', 'server-message');
             });
-        } else if (curStatus === 2) {
+        } else if (curStatus === 3) {
             if (userInput !== "A" && userInput !== "B" && userInput !== "C") {
                 setLoadingIndicator(false);
                 displayMessage('Error: Please input A, B or C.', 'server-message');
             } else {
-                curStatus = 3
+                curStatus = 4
                 curBot = userInput;
                 const messages = [
                     { text: originBotName + ": Thank you so much! It seems like you have chose group " + userInput + ".", delay: 5000 },
@@ -88,8 +92,7 @@ document.getElementById('send-button').addEventListener('click', function() {
                 const messages = [
                     { text: originBotName + ": I'm really happy to hear that you are safe now!", delay: 5000 },
                     { text: originBotName + ": Please feel free to talk anything to me. All the record of conversation will be deleted in your phone or computer. Nobody will know what we have talked before after closing this website.", delay: 5000 },
-                    { text: originBotName + ": By the way, please confirm that would you mind letting researchers from Kyoto University use our conversation data to make me more smart and can talk more things to you. Feel free to do the decision cause if you say 'No', you can also talk with me as well. We respect your choices.", delay: 5000 },
-                    { text: originBotName + ": Would you mind if the researchers use this conversation data? (This conversation only) Please type 'yes' or 'no'"}
+                    { text: originBotName + ": Next progress is input your ID, please type your ID.", delay: 5000 },
                 ];
                 messages.forEach((message, index) => {
                     setTimeout(() => {
@@ -100,11 +103,11 @@ document.getElementById('send-button').addEventListener('click', function() {
                     }, messages.slice(0, index).reduce((total, msg) => total + msg.delay, 0));
                 });
             }
-        } else if (curStatus === 1) {
+        } else if (curStatus === 2) {
             if (userInput !== "yes" && userInput !== "no") {
                 displayMessage('Error: Please input yes or no.', 'server-message');
             } else {
-                curStatus = 2
+                curStatus = 3
                 const messages = [
                     { text: originBotName + ": Thank you so much for sharing data to us! Researchers will try them best to make me more smart and easy to talk with!", delay: 5000 },
                     { text: originBotName + ": The next step is choosing your group.", delay: 5000 },
@@ -119,7 +122,28 @@ document.getElementById('send-button').addEventListener('click', function() {
                     }, messages.slice(0, index).reduce((total, msg) => total + msg.delay, 0));
                 });
             }
-        } else {
+        } else if (curStatus === 1) {
+            if (isNumeric(userInput) === false) {
+                displayMessage('Error: Please input numbers, your id should not have letters.', 'server-message');
+            } else {
+                curStatus = 2
+                userId = userInput
+                const messages = [
+                    { text: originBotName + ": Thank you for sharing your ID to us, your ID is " + userInput + ".", delay: 5000 },
+                    { text: originBotName + ": By the way, please confirm that would you mind letting researchers from Kyoto University use our conversation data to make me more smart and can talk more things to you. Feel free to do the decision cause if you say 'No', you can also talk with me as well. We respect your choices.", delay: 5000 },
+                    { text: originBotName + ": Would you mind if the researchers use this conversation data? (This conversation only) Please type 'yes' or 'no'"}
+                ];
+                messages.forEach((message, index) => {
+                    setTimeout(() => {
+                        displayMessage(message.text, 'server-message');
+                        if (index === messages.length - 1) {
+                            setLoadingIndicator(false); // Make the indicator invisible
+                        }
+                    }, messages.slice(0, index).reduce((total, msg) => total + msg.delay, 0));
+                });
+            }
+        } 
+        else {
             displayMessage('Error: Having some internal error, please refresh the page.', 'server-message');
         }
         
@@ -138,4 +162,8 @@ function displayMessage(message, className) {
 
 function setLoadingIndicator(show) {
     document.getElementById('loading-indicator').style.display = show ? 'block' : 'none';
+}
+
+function isNumeric(str) {
+    return /^\d+$/.test(str);
 }
