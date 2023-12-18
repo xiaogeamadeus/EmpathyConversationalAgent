@@ -70,7 +70,7 @@ body {
 
 #loading-indicator {
     position: absolute;
-    top: 600px;
+    top: calc(90vh - 180px);
     right: 10px;
     display: flex;
     justify-content: flex-end;
