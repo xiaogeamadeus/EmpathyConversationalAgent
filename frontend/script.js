@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function displayInitialMessages() {
     setLoadingIndicator(true);
     const messages = [
-        { text: originBotName + ": Thank you so much for your time and courage to talk with me. I am really sorry that it was the situation that brought you here today. But it takes great strength to walk through those doors and say: 'I need help'.", delay: 5000 },
+        { text: originBotName + ": Thank you for joining this chat. I am an AI chatbot, and I am here for a friendly chat with you.", delay: 5000 },
         { text: originBotName + ": Before we start talking, please confirm that you are safe now and let yourself keep in a relaxed environment.", delay: 5000 },
         { text: originBotName + ": Are you in a safe environment without anyone else who will give you pressure? Please type 'yes' or 'no'"},
     ];
@@ -72,7 +72,7 @@ document.getElementById('send-button').addEventListener('click', function() {
                 curBot = userInput;
                 const messages = [
                     { text: originBotName + ": Thank you so much! It seems like you have chose group " + userInput + ".", delay: 5000 },
-                    { text: originBotName + ": Please enjoy the conversation with AI!"},
+                    { text: originBotName + ": Now let's begin our conversation. I invite you, as an Afghan woman, to openly share any challenges, concerns, or problems you may have. We can discuss how to solve them together. This is a safe and supportive space where you can discuss anything that is on your mind, whether it is related to your life, specific issues faced by Afghan women, or any other topic you would like to address. Please feel comfortable sharing, knowing that I am here to listen, understand, and support you in any way I can."},
                 ];
 
                 messages.forEach((message, index) => {

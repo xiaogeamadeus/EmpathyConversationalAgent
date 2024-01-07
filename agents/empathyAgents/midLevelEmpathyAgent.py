@@ -39,7 +39,6 @@ class MidLevelEmpathyAgent:
         assistant = self.client.beta.assistants.create(
             name="Mid-level Empathy Editor",
             description="Motor Mimicry & Emotional Contagion",
-            # TODO: change the instructions
             instructions="You are an Empathy Editor. The task of you is doing emotional contagion of the "
                          "input sentences. you will accept two sentences, the first sentence is user's response, "
                          "the second one is a possible response. Your task is editing the possible response. First, "
