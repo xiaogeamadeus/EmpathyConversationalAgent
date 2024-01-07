@@ -72,7 +72,10 @@ document.getElementById('send-button').addEventListener('click', function() {
                 curBot = userInput;
                 const messages = [
                     { text: originBotName + ": Thank you so much! It seems like you have chose group " + userInput + ".", delay: 5000 },
-                    { text: originBotName + ": Now let's begin our conversation. I invite you, as an Afghan woman, to openly share any challenges, concerns, or problems you may have. We can discuss how to solve them together. This is a safe and supportive space where you can discuss anything that is on your mind, whether it is related to your life, specific issues faced by Afghan women, or any other topic you would like to address. Please feel comfortable sharing, knowing that I am here to listen, understand, and support you in any way I can."},
+                    { text: originBotName + ": Now let's begin our conversation. I invite you, as an Afghan woman, to openly share any challenges, concerns, or problems you may have.", delay: 5000},
+                    { text: originBotName + ": We can discuss how to solve them together. This is a safe and supportive space where you can discuss anything that is on your mind, whether it is related to your life, specific issues faced by Afghan women, or any other topic you would like to address.", delay: 5000},
+                    { text: originBotName + ": Please feel comfortable sharing, knowing that I am here to listen, understand, and support you in any way I can.", delay: 5000},
+                    { text: originBotName + ": Could you share your problem with me to discuss its solution?"},
                 ];
 
                 messages.forEach((message, index) => {
