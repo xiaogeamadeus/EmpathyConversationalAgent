@@ -19,10 +19,13 @@ current_date = datetime.now().strftime("%Y-%m-%d")
 # body: {id:"", message:""}
 
 def write_json_log(user_id, cur_agent, user_input, user_output):
-    current_date = datetime.now().strftime("%Y-%m-%d")
+    current = datetime.now()
+    current_date = current.strftime("%Y-%m-%d")
+    current_time = current.strftime("%H:%M:%S")
     log_entry = {
         "userId": user_id,
         "currentAgent": cur_agent,
+        "currentTime": current_time,
         "userInput": user_input,
         "userOutput": user_output
     }
