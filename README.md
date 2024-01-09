@@ -111,3 +111,35 @@ body
   "message": "{user input}"
 }
 ```
+
+## Logs handling
+Backend will automatedly store logs in a folder named `logs`. The logs will be stored as a json file with name of date. E.g. `log_2024-01-01.json`
+
+Every logs will be generated when backend accepted a request from frontend. 
+
+A case of logs seems like below:
+```json
+{
+  "userId": "12345", 
+  "currentAgent": "Listener", 
+  "currentTime": "05:20:00", 
+  "userInput": "I'm Wang, I feel not so good today... I need your help.", 
+  "userOutput": "Hello Wang, I'm here to listen and support you. It's okay to have tough days, and I'm glad you reached out. Would you like to share a bit about what's making you feel not so good, or would you prefer to talk about something else to help take your mind off things? Remember, this is a safe space for you."
+  }
+```
+
+#### Get logs from remote server
+Our server run in Amazon EC2, so if we hope to get the logs file, we need to use `scp` command to safety copy the logs file to your local.
+
+```shell
+scp -i /directory/to/abc.pem user@ec2-xx-xx-xxx-xxx.compute-1.amazonaws.com:path/to/file /your/local/directory/files/to/download
+```
+
+Use logsHandler.py function can handle logs file as below:
+1. group by logs with user id with time order
+2. stored logs to some new json file "{userId}.json"
+   
+Please remember to update the original logs file.
+```shell
+python3 logsHandler.py
+```
