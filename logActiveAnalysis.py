@@ -25,7 +25,7 @@ def process_json_file(file_path):
         return 0, timedelta(0)
 
 # Assuming JSON files are in the 'logs/batch1/' directory
-directory = 'logs/batch4/'
+directory = 'logs/batch5/'
 json_files = [f for f in os.listdir(directory) if f.endswith('.json')]
 
 # Collecting file names, their object counts, and time differences in a list of tuples

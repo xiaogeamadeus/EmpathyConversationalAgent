@@ -76,7 +76,7 @@ class EmotionRecognizer:
         run = self.wait_for_run_completion(thread.id, run.id)
 
         if run.status != 'completed':
-            print("emotion recognizer: ", run.error)
+            print("emotion recognizer error")
         else:
             # Return the latest messages from the thread
             messages = self.client.beta.threads.messages.list(thread_id=thread.id)

@@ -70,7 +70,7 @@ class SimpleEnglishEditor:
         run = self.wait_for_run_completion(thread.id, run.id)
 
         if run.status != 'completed':
-            print("simple english editor: ", run.error)
+            print("simple english editor error")
         else:
             # Return the latest messages from the thread
             messages = self.client.beta.threads.messages.list(thread_id=thread.id)

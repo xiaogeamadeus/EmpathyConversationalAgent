@@ -19,5 +19,5 @@ for entry in data:
 # write into new json file based on userid
 for userId, entries in grouped_data.items():
     sorted_entries = sorted(entries, key=lambda x: datetime.strptime(x["currentTime"], '%H:%M:%S'))
-    with open(f'logs/batch4/{userId}.json', 'w') as file:
+    with open(f'logs/batch5/{userId}.json', 'w') as file:
         json.dump(sorted_entries, file, indent=4)

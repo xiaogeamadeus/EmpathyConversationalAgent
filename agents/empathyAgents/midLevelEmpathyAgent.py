@@ -72,7 +72,7 @@ class MidLevelEmpathyAgent:
         run = self.wait_for_run_completion(thread.id, run.id)
 
         if run.status != 'completed':
-            print("mid-level: ",run.error)
+            print("mid-level error")
         else:
             # Return the latest messages from the thread
             messages = self.client.beta.threads.messages.list(thread_id=thread.id)
