@@ -47,7 +47,7 @@ class EmotionRecognizer:
             description="Recognize the emotion from messages",
             instructions="You are an emotion scorer, we will give you some sentences and please detect one of the most "
                          "obviously emotion in this sentence and rate the intensity of the emotions. The list of "
-                         "emotions only contains 'joy', 'sad', 'anger', 'fear', 'surprise', 'disgust', 'neutral', "
+                         "emotions only contains 'joy', 'sad', 'anger', 'fear', 'surprise', 'neutral', "
                          "and the intensity from low to high is from 0 to 100. The structure of response will follow "
                          "structure of 'fear,19' or 'joy,30' as well, thank you.",
             model="gpt-4-1106-preview"
