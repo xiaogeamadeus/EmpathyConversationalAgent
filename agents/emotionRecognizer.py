@@ -49,7 +49,7 @@ class EmotionRecognizer:
                          "obviously emotion in this sentence and rate the intensity of the emotions. The list of "
                          "emotions only contains 'joy', 'sad', 'anger', 'fear', 'surprise', 'neutral', "
                          "and the intensity from low to high is from 0 to 100. The structure of response will follow "
-                         "structure of 'fear,19' or 'joy,30' as well, thank you.",
+                         "structure of 'fear,19' or 'joy,30' as well. What's more, you only need to response the emotion with the highest score. Return more than 1 emotion is not allowed.",
             model="gpt-4-1106-preview"
         )
 

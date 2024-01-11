@@ -7,12 +7,14 @@ emotion_recogn = EmotionRecognizer()
 low_level = LowLevelEmpathyAgent()
 #
 test1 = "Could you please tell me why you do not say something?"
-test2 = "He'd come and beat me up at work no matter what kind of shit was going on. Everytime when I do something not satisfied him, he will beat me, The scariest thing is that my kids are turning into men like him."
+test2 = "A great thing is that my women friend can talk with me and help me reduce some stress. But we cannot see and chat with each other usually."
 # test2 = "Could you please tell me why you do not try to do something and say?"
 # print(emotion_recogn.run_agent(test1))
 # print(emotion_recogn.run_agent(test2))
 
-print(emotion_recogn.run_agent(test2))
+res = emotion_recogn.run_agent(test2)
+print(res.emotion)
+print(res.rate)
 #
 # print("res1: " + str(avoiding.checkDuplicate(test1)))
 # print("res2: " + str(avoiding.checkDuplicate(test2)))
