@@ -25,19 +25,21 @@ def process_json_file(file_path):
         return 0, timedelta(0)
 
 # Assuming JSON files are in the 'logs/batch1/' directory
-directory = 'logs/batch5/'
+current_batch = "4" 
+directory = f"logs/batch{current_batch}/"
 json_files = [f for f in os.listdir(directory) if f.endswith('.json')]
 
 # Collecting file names, their object counts, and time differences in a list of tuples
 file_data = []
 for json_file in json_files:
+    id = int(json_file.split('.')[0])
     count, time_diff = process_json_file(os.path.join(directory, json_file))
-    file_data.append((json_file, count, time_diff))
+    file_data.append((id, count, time_diff))
 
 # Sorting the list by the count of objects in each file (second item of the tuple)
-sorted_file_data = sorted(file_data, key=lambda x: x[1], reverse=True)
+sorted_file_data = sorted(file_data, key=lambda x: x[0])
 
 # Printing the sorted list
-for json_file, count, time_diff in sorted_file_data:
-    id = json_file.split('.')[0]
+print(f"Batch{current_batch} Result:")
+for id, count, time_diff in sorted_file_data:
     print(f"UserId: {id}, {count} Conversations, Login Duration: {time_diff}")

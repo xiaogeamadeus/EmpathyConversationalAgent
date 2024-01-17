@@ -14,6 +14,8 @@ CORS(app, resources=r'/*')
 empathy = EmpathyConversationalAgent()
 
 current_date = datetime.now().strftime("%Y-%m-%d")
+listener = CompassionateListener()
+gpt = NormalGPT()
 
 
 # body: {id:"", message:""}
@@ -54,9 +56,8 @@ def listener_converse():
     data = json.loads(raw_data)
     user_input = data["message"]
     user_id = data["id"]
-    listener = CompassionateListener()
     agent_response = listener.run_agent(user_input)
-    write_json_log(user_id, "Listener", user_input, agent_response)
+    # write_json_log(user_id, "Listener", user_input, agent_response)
     return jsonify({"agentName": "Listener Bot", "message": agent_response})
 
 
@@ -68,11 +69,11 @@ def gpt_converse():
     data = json.loads(raw_data)
     user_input = data["message"]
     user_id = data["id"]
-    gpt = NormalGPT()
+
     agent_response = gpt.run_agent(user_input)
     write_json_log(user_id, "GPT", user_input, agent_response)
     return jsonify({"agentName": "Nomal Bot", "message": agent_response})
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, threaded=True)
