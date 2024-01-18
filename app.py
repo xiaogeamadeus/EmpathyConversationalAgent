@@ -57,7 +57,7 @@ def listener_converse():
     user_input = data["message"]
     user_id = data["id"]
     agent_response = listener.run_agent(user_input)
-    # write_json_log(user_id, "Listener", user_input, agent_response)
+    write_json_log(user_id, "Listener", user_input, agent_response)
     return jsonify({"agentName": "Listener Bot", "message": agent_response})
 
 
