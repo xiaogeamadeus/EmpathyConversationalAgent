@@ -3,6 +3,10 @@
 ## Background
 From the 2008, 87.2% women in Afghanistan have reported at least one form of DV, which might have increased with the government takeover in 2021 by Taliban.
 
+## Publication
+*Tianchen WANG, Sofia SAHAB, Jawad HAQBEEN, Takayuki ITO, Assessing the Impact of AI Conversational Agents on the Mental Health and Self-Efficacy of Afghan Women, Proceedings of the Annual Conference of JSAI, 2024, Volume JSAI2024, 38th (2024), Session ID 4R1-OS-8a-03, Pages 4R1OS8a03, Released on J-STAGE June 11, 2024, Online ISSN 2758-7347, https://doi.org/10.11517/pjsai.JSAI2024.0_4R1OS8a03, https://www.jstage.jst.go.jp/article/pjsai/JSAI2024/0/JSAI2024_4R1OS8a03/_article/-char/en, Abstract:
+This study investigates the potential of AI conversational agents as a support tool for Afghan women facing mental health challenges post-2021.It assesses the effectiveness of these agents in providing a safe space for sharing experiences and improving mental health and self-efficacy. In a controlled experiment, 60 Afghan women interacted for an hour with one of three AI agents: a standard GPT-4 agent (Agent A), an instructional-enhanced agent (Agent B), and an empathy-enhanced agent (Agent C). Well-being and self-efficacy were measured using the WHO-5 Well-being Index and a General Self-Efficacy scale before the experiment and at a one-week follow-up. Preliminary findings indicate that Agent C significantly improves well-being and self-efficacy compared to Agents A and B. These initial insights highlight the potential of AI conversational agents as tools for psychological support.
+
 ## Access Services
 By [link](http://52.193.135.127:8000/)
 
